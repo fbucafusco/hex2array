@@ -8,7 +8,7 @@ class Line
         char *data;
         int checksum;
         Line( int bytecount );
-        Line( const Line &l );
+       // Line( const Line &l );
         ~Line();
 
 };

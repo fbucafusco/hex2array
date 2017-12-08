@@ -1,7 +1,3 @@
-// hex2array.cpp : コンソール アプリケーションのエントリ ポイントを定義します。
-//
-
-//#include "stdafx.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -43,7 +39,7 @@ void print_data( Line *line, ofstream *of, int size , int width )
 		if( width == 8 )
 		{
 			data = ( line == nullptr ) ? 0xFF : ( uint8_t )line->data[i];
-			template_ = "0x%02X, ";
+			template_ = (char *) "0x%02X, ";
 			datacount++;
 		}
 		
@@ -55,7 +51,7 @@ void print_data( Line *line, ofstream *of, int size , int width )
 				data += ( line == nullptr ) ? 0xFF : (( uint8_t )line->data[i])*j;
 				datacount++;
 			}
-			template_ = "0x%04X, ";
+			template_ = (char *) "0x%04X, ";
 			i--;
 		}
 		
@@ -67,18 +63,14 @@ void print_data( Line *line, ofstream *of, int size , int width )
 				data += ( line == nullptr ) ? 0xFF : (( uint8_t )line->data[i])*j;
 				datacount++;
 			}
-			template_ = "0x%08X, ";
+			template_ = (char *) "0x%08X, ";
 				i--;
 				
 		}
-		
-        
-        
+		 
         sprintf( buff,  template_ , data );
         *of << ( string )buff;
-        
-		
-        //printf("\'%02X\', ", (uint8_t)lines->data[i]);
+         
          if ( !( datacount % 8 ) )
         {
             //printf("\n");

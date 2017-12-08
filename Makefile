@@ -31,7 +31,7 @@ LFLAGS +=
 
 #regla que linkea luego de tener los requisitos
 all: info objs   
-	gcc $(OUT_PATH)*.opp -o $(PROJECT_NAME) $(LFLAGS)
+	gcc $(OUT_PATH)*.opp -o $(OUT_PATH)$(PROJECT_NAME) $(LFLAGS)
 
 #regla que compila cada .c por serparado en un .o
 %.o: %.c
@@ -58,9 +58,10 @@ objs:   $(foreach src_file, $(SRC_FILES),  $(patsubst %.cpp,%.opp, $(src_file) )
 info:
 	@echo '---------------------------------------------------------------------'
 	@echo 'Makefile Path:            '$(MAKEFILE_DIR)
+	@echo 'Output Path:              '$(OUT_PATH)
 	@echo '---------------------------------------------------------------------'
 	@echo ''
 	
 clean:
-	@rm -rf $(OUT_PATH)*.o $(PROJECT_NAME)
+	@rm -rf $(OUT_PATH)*.o $(OUT_PATH)$(PROJECT_NAME)
 	@rm -rf $(OUT_PATH)

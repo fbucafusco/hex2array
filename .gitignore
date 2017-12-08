@@ -1,4 +1,2 @@
-/Debug
-/hex2array/Debug
-*.obj
-*.pch
+/out
+
