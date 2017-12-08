@@ -15,11 +15,12 @@ make
 
 ### Usage:
 
-hex2array `<input hex file>` `<output c file>` `<width>`
+hex2array `<input hex file>` `<output c/h file>` modifiers
 
+#### Modifiers
 `<width>` [optional] data width of each element of the array: 8, 16, 32. Default value is uint8_t
   
 ### Pending Changes:
-- add endiannes modifiers
+- add endiannes modifier
 - add output modifiers (# of elements per line, etc)
 

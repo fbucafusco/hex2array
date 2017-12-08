@@ -5,13 +5,14 @@
 #include <cstdint>
 #include "Line.h"
 
+#define DEBUG 	0
+
 using namespace std;
 
 uint8_t crc = 0;
 
 long datacount = 0;
-
-
+ 
 void print_data( Line *line, ofstream *of, int size , int width )
 {
     char buff[35];
@@ -119,7 +120,6 @@ int main( int argc, char ** argv )
                 width = "uint8_t";
                 break;
         }
-
     }
     else
     {
@@ -162,7 +162,7 @@ int main( int argc, char ** argv )
                 // get checksum
                 line->checksum = stoi( l.substr( 9 + ( bytecount * 2 ), 2 ), nullptr, 16 );
 
-#if 1
+#if DEBUG==1
                 cout << "bytecount: " << setfill( '0' ) << setw( 2 ) << std::hex << line->bytecount << "\n";
                 cout << "address: " << setfill( '0' ) << setw( 2 ) << std::hex << line->address << "\n";
                 cout << "type: " << setfill( '0' ) << setw( 2 ) << std::hex << line->type << "\n";
