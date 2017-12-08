@@ -3,7 +3,7 @@ forked from : https://github.com/meriororen/hex2array
 
 Convert intel hex format to C array.
 
-Usefull for compiling binary images from one project into another. 
+Useful for compiling binary images from one project into another. 
 
 ie: BOOTLOADER + MAIN APPLICATION
 
