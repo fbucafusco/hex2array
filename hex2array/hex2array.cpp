@@ -72,7 +72,7 @@ void print_data( Line *line, ofstream *of, int size, tModifier* mod )
         {
             char_data = ( line == nullptr ) ? 0xFF : ( uint8_t )line->data[i];
             data = char_data;
-            template_ = ( char * ) "0x%02X, ";
+            template_ = ( char * ) "0x%02X";
             datacount++;
             crc ^= char_data;
         }
@@ -88,7 +88,7 @@ void print_data( Line *line, ofstream *of, int size, tModifier* mod )
                 datacount++;
                 crc ^= char_data;
             }
-            template_ = ( char * ) "0x%04X, ";
+            template_ = ( char * ) "0x%04X";
             i--;
         }
 
@@ -104,20 +104,26 @@ void print_data( Line *line, ofstream *of, int size, tModifier* mod )
                 crc ^= char_data;
             }
 
-            template_ = ( char * ) "0x%08X, ";
+            template_ = ( char * ) "0x%08X";
 
             i--;
         }
 
         SPRINTF( buff,  template_, data );
-
+		 
         *of <<  buff;
+
+		if( i < len-1 )
+		{
+			 *of <<  " , ";
+		}
 
         if( !( datacount % ( 4*128/mod->data_width ) ) &&  ( line == nullptr ) )
         {
             *of << "\n";
         }
     }
+
     *of << "\n";
 }
 
