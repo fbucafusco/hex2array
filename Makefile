@@ -24,7 +24,7 @@ include project.mk
 
 #flags que se le pasa al compilador
 CFLAGS += $(foreach inc, $(INC_FILES), -I$(inc) )
-CFLAGS += -D_WIN32 -ggdb -Wall
+CFLAGS +=   -ggdb -Wall
 
 #flags que se le pasa al linker  (pueden agregarse en project.mk)
 LFLAGS +=
