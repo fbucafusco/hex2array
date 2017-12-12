@@ -18,9 +18,9 @@ make
 hex2array `<input hex file>` `<output c/h file>` <modifiers>
 
 #### Modifiers
--wXX XX = data width of each element of the array: 8, 16, 32
--b      = adds pradding (0xFF) from the first section to the first data
--cX  X  = target compiler selection 0: none
+`-wXX` XX = data width of each element of the array: 8, 16, 32
+`-b`      = adds pradding (0xFF) from the first section to the first data
+`-cX`  X  = target compiler selection 0: none
                                     1: gcc
 									2: armcc 
 									3: iar
