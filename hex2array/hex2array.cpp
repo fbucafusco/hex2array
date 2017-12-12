@@ -353,7 +353,7 @@ int main( int argc, char ** argv )
                                 {
                                     if( base_count>0 )
                                     {
-                                        ofile<<"}\n";
+                                        ofile<<"};\n";
                                     }
 
                                     print_array_declaration(  &ofile, base_count, &modifiers, last_base );
@@ -370,7 +370,7 @@ int main( int argc, char ** argv )
 
                                 if( base_count>0 )
                                 {
-                                    ofile<<"}\n";
+                                    ofile<<"};\n";
                                 }
 
                                 print_array_declaration(  &ofile, base_count, &modifiers, last_base + line->address );
