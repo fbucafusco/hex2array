@@ -1,9 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <string>
 #include <cstdint>
-
+#include <cstring>
+#include <string>
 #include "Line.h"
 
 #ifdef _WIN32
@@ -56,7 +56,7 @@ void print_data( Line *line, ofstream *of, int size, tModifier* mod )
     }
     else
     {
-        len = line->bytecount; 
+        len = line->bytecount;
     }
 
     uint32_t data;
@@ -111,7 +111,7 @@ void print_data( Line *line, ofstream *of, int size, tModifier* mod )
 
         SPRINTF( buff,  template_, data );
 
-        *of << ( string )buff;
+        *of <<  buff;
 
         if( !( datacount % ( 4*128/mod->data_width ) ) &&  ( line == nullptr ) )
         {
@@ -124,6 +124,8 @@ void print_data( Line *line, ofstream *of, int size, tModifier* mod )
 
 void evaluate_modifiers( char* modifier, tModifier* out )
 {
+    string num;
+
     if( memcmp( "-w", modifier,strlen( "-w" ) )==0 )
     {
         uint8_t dw;
@@ -272,6 +274,7 @@ int main( int argc, char ** argv )
     }
 
     cout << "opening " << ipath << "...\n";
+
     ifile.open( ipath, ios::binary | ios::in );
 
     cout << "opening " << opath << "...\n";
@@ -332,7 +335,7 @@ int main( int argc, char ** argv )
                         if ( last_type == 0x04 )
                         {
                             int last_base_;
-							 
+
                             if( modifiers.flags&HEX2ARRAY_FILL_BLANKS )
                             {
                                 int blank = line->address - ( last_address + last_size );
@@ -350,8 +353,10 @@ int main( int argc, char ** argv )
                                     print_array_declaration(  &ofile, base_count, &modifiers, last_base );
                                 }
 
-								if(blank)
-                                print_data( nullptr, &ofile, blank , &modifiers );
+                                if( blank )
+                                {
+                                    print_data( nullptr, &ofile, blank, &modifiers );
+                                }
                             }
                             else
                             {
@@ -366,7 +371,7 @@ int main( int argc, char ** argv )
                             }
 
                             print_data( line, &ofile, 0, &modifiers );
-							 
+
                             base_count++;
                         }
                         else if (  last_type == 0x00 )
@@ -375,7 +380,7 @@ int main( int argc, char ** argv )
                         }
                         else
                         {
-                           
+
                         }
                         break;
 
@@ -394,7 +399,7 @@ int main( int argc, char ** argv )
 
                     case 0x04:
                         last_base =  ( ( uint32_t )line->data[1] + ( ( uint32_t )line->data[0]<<8 ) ) <<16  ;
-						 
+
                         break;
 
                     case 0x05:

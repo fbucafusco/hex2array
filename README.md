@@ -15,12 +15,18 @@ make
 
 ### Usage:
 
-hex2array `<input hex file>` `<output c/h file>` modifiers
+hex2array `<input hex file>` `<output c/h file>` <modifiers>
 
 #### Modifiers
-`<width>` [optional] data width of each element of the array: 8, 16, 32. Default value is uint8_t
-  
+-wXX XX = data width of each element of the array: 8, 16, 32
+-b      = adds pradding (0xFF) from the first section to the first data
+-cX  X  = target compiler selection 0: none
+                                    1: gcc
+									2: armcc 
+									3: iar
+									
 ### Pending Changes:
 - add endiannes modifier
 - add output modifiers (# of elements per line, etc)
-
+- support for gcc / iar
+- -b modifier generates an ugly non aligned output format. 

@@ -1,6 +1,14 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#define SPRINTF sprintf
+#else
+#define SPRINTF sprintf
+#endif
+
 #include "Line.h"
 #include "string.h"
+
+
 Line::Line( int bc )
 {
     bytecount = bc;
